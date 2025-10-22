@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infografía: Pruebas Gemini Pro</title>
+    <title>Guía Interactiva Completa: Pruebas Gemini Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Tailwind's gray-50 */
+            scroll-behavior: smooth;
         }
-        .card-icon {
-            width: 3rem; /* 48px */
-            height: 3rem; /* 48px */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .accordion-content.open {
+            max-height: 2500px; /* Increased max-height for nested content */
+            transition: max-height 0.4s ease-in;
+        }
+        .accordion-arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+        .accordion-button.open > .accordion-arrow {
+            transform: rotate(180deg);
+        }
+        .highlight {
+            background-color: #fef9c3; /* yellow-100 */
+            border-left: 4px solid #facc15; /* yellow-400 */
+            transform: scale(1.01);
+            transition: all 0.3s ease-in-out;
+        }
+        .section-header {
+            border-left-width: 6px;
+            padding-left: 1rem;
         }
     </style>
 </head>
@@ -26,131 +48,297 @@
         <!-- Encabezado -->
         <header class="text-center mb-10 md:mb-16">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 tracking-tight">¡Ayúdanos a probar Gemini Pro!</h1>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                Queremos saber qué tan útil es la IA en tus tareas diarias. Tu opinión es clave para decidir si la incorporamos en la escuela.
-            </p>
         </header>
 
         <!-- Sección: Cómo Participar -->
         <section class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12 md:mb-16 border border-gray-200">
             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">¿Cómo participar? (Es muy simple)</h2>
             <div class="flex flex-col md:flex-row justify-around items-start text-center gap-8">
-                <!-- Paso 1 -->
-                <div class="flex-1 flex flex-col items-center">
-                    <div class="bg-blue-100 text-blue-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">1</div>
-                    <h3 class="font-semibold text-xl mb-2">PROBÁ</h3>
-                    <p class="text-gray-600 max-w-xs">Usá Gemini Pro en tus tareas habituales.</p>
+                 <div class="flex-1 flex flex-col items-center">
+                    <div class="bg-green-100 text-green-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">1</div>
+                    <h3 class="font-semibold text-xl mb-2">GENERÁ UN DOC</h3>
+                    <p class="text-gray-600 max-w-xs">
+                        Creá tu único Google Doc de registro en 
+                        <a href="https://drive.google.com/drive/folders/1jDL4iO3H2wJfOBwaAdejftTVEU_EsOVF?usp=sharing" target="_blank" class="text-blue-600 font-medium hover:underline">esta carpeta compartida</a>.
+                    </p>
                 </div>
-                <!-- Paso 2 -->
                 <div class="flex-1 flex flex-col items-center">
-                     <div class="bg-blue-100 text-blue-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">2</div>
-                    <h3 class="font-semibold text-xl mb-2">REGISTRÁ</h3>
-                    <p class="text-gray-600 max-w-xs">Creá <strong>un solo Google Doc</strong> en la carpeta compartida.</p>
+                     <div class="bg-green-100 text-green-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">2</div>
+                     <h3 class="font-semibold text-xl mb-2">PROBÁ</h3>
+                    <p class="text-gray-600 max-w-xs">Usá Gemini en tus tareas. Empezá con las sugerencias para tu rol.</p>
                 </div>
-                <!-- Paso 3 -->
                 <div class="flex-1 flex flex-col items-center">
-                     <div class="bg-blue-100 text-blue-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">3</div>
+                     <div class="bg-green-100 text-green-600 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4 font-bold text-2xl shadow-sm">3</div>
                     <h3 class="font-semibold text-xl mb-2">ANOTÁ</h3>
                     <ul class="text-left text-gray-600 list-disc list-inside space-y-1 mx-auto max-w-xs text-base">
-                        <li>Qué probaste</li>
-                        <li>Para qué lo usaste</li>
-                        <li>El resultado</li>
+                        <li>Qué probaste y para qué</li>
+                        <li>El resultado (antes/después)</li>
                         <li>Tu reflexión final</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Qué Probar -->
-        <section>
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-800">¿Qué puedo probar?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-
-                <!-- Eje 1: Crear Contenido -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-green-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-start justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-green-600">Creá Contenido</h3>
-                        <div class="bg-green-100 p-3 rounded-full">
-                           <svg class="h-8 w-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
-                           </svg>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span><span><b>Redactá borradores:</b> Mails, informes, propuestas.</span></li>
-                        <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span><span><b>Generá imágenes y videos:</b> Para tus clases o presentaciones.</span></li>
-                        <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span><span><b>Creá fórmulas:</b> Pedile a Sheets lo que necesitás con lenguaje simple.</span></li>
-                        <li class="flex items-start"><span class="text-green-500 mr-2 mt-1">&#10003;</span><span><b>Hacé brainstorming:</b> Generá ideas y esquemas para tus proyectos.</span></li>
-                    </ul>
-                </div>
-
-                <!-- Eje 2: Resumir y Analizar -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-purple-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-start justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-purple-600">Resumí y Analizá</h3>
-                         <div class="bg-purple-100 p-3 rounded-full">
-                            <svg class="h-8 w-8 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                            </svg>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><span class="text-purple-500 mr-2 mt-1">&#10003;</span><span><b>Resumí mails y chats:</b> Obtené los puntos clave al instante.</span></li>
-                        <li class="flex items-start"><span class="text-purple-500 mr-2 mt-1">&#10003;</span><span><b>Analizá documentos:</b> Creá resúmenes ejecutivos y extraé tareas.</span></li>
-                        <li class="flex items-start"><span class="text-purple-500 mr-2 mt-1">&#10003;</span><span><b>Preguntale a tus archivos:</b> Buscá datos en Drive sin abrir nada.</span></li>
-                        <li class="flex items-start"><span class="text-purple-500 mr-2 mt-1">&#10003;</span><span><b>Investigá a fondo:</b> Usá la versión Pro para búsquedas más completas.</span></li>
-                    </ul>
-                </div>
-
-                <!-- Eje 3: Mejorar y Organizar -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-orange-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-start justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-orange-600">Mejorá y Organizá</h3>
-                         <div class="bg-orange-100 p-3 rounded-full">
-                           <svg class="h-8 w-8 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                           </svg>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-gray-700">
-                       <li class="flex items-start"><span class="text-orange-500 mr-2 mt-1">&#10003;</span><span><b>Mejorá tu redacción:</b> Corregí, cambiá el tono o reestructurá textos.</span></li>
-                       <li class="flex items-start"><span class="text-orange-500 mr-2 mt-1">&#10003;</span><span><b>Creá tablas y plantillas:</b> Generá estructuras en Sheets solo describiéndolas.</span></li>
-                       <li class="flex items-start"><span class="text-orange-500 mr-2 mt-1">&#10003;</span><span><b>Transformá contenido:</b> Convertí un documento en una presentación.</span></li>
-                    </ul>
-                </div>
-
-                <!-- Eje 4: Explorar lo "Pro" -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-red-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-start justify-between mb-4">
-                        <h3 class="text-2xl font-bold text-red-600">Explorá lo "Pro"</h3>
-                         <div class="bg-red-100 p-3 rounded-full">
-                           <svg class="h-8 w-8 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.287 8.287 0 0 0 3-2.553Z" />
-                               <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214C14.252 5.214 13.27 5.463 12.383 5.925m3.733-3.733a1.5 1.5 0 0 1-2.121 2.121l-1.262 1.262M12 21a8.25 8.25 0 0 1-9.038-9.047 8.287 8.287 0 0 0 2.047 1.011 8.287 8.287 0 0 0 6.991-6.991 8.287 8.287 0 0 0-1.01-2.047A8.25 8.25 0 0 1 12 21Z" />
-                           </svg>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">&#10003;</span><span><b>Compará versiones:</b> Hacé la misma tarea en Pro y Flash. ¿Notás la diferencia?</span></li>
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">&#10003;</span><span><b>Creá un "Gem":</b> Armá un chatbot personalizado sobre un tema.</span></li>
-                        <li class="flex items-start"><span class="text-red-500 mr-2 mt-1">&#10003;</span><span><b>Personalizá tu chat:</b> Ajustá el tono y nivel de detalle de las respuestas.</span></li>
-                    </ul>
-                </div>
-
+        <!-- Sección: Catálogo de Pruebas -->
+        <section id="catalogo-pruebas" class="mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-800">Catálogo Completo de Pruebas</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start" id="catalog-container">
+                <!-- Catalog sections will be generated by JS -->
             </div>
         </section>
 
-        <!-- Pie de página / Nota importante -->
-        <footer class="text-center mt-12 md:mt-16 bg-gray-100 p-6 md:p-8 rounded-2xl border border-gray-200">
-            <h3 class="font-bold text-2xl mb-3 text-gray-800">¡Importante!</h3>
-            <p class="text-gray-600 max-w-3xl mx-auto text-base">
-                En el instructivo original hay sugerencias específicas para tu área. ¡Revisalas si querés un punto de partida!
-                <br class="hidden sm:block">
-                Sentite libre de probar todo lo que te interese, aunque no esté en la lista.
-            </p>
-        </footer>
-
+        <!-- Sección Sugerencias por Rol -->
+        <section>
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">Sugerencias para tu Rol</h2>
+             <div class="text-center max-w-3xl mx-auto mb-10">
+                <p class="text-gray-600 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    ¡Te invitamos a probar todas las funcionalidades! Esta lista es solo un punto de partida con las pruebas que creemos que te resultarán más útiles en tu día a día. Tu curiosidad es el límite.
+                </p>
+             </div>
+             <div id="roles-container" class="space-y-4 max-w-4xl mx-auto">
+                <!-- Los roles se generarán con JS -->
+             </div>
+        </section>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DATA ---
+            const testsData = {
+                "1": {
+                    title: "Gemini App",
+                    color: "blue",
+                    tests: {
+                        "1.1": { title: "Acceso a versión PRO", subs: {
+                            "1.1.1": "<strong>Versión Flash vs Pro:</strong> Compará las diferencias para tareas específicas (redacción, resúmenes) y documentá cuál da mejores resultados.",
+                            "1.1.2": "<strong>Informes de deep research:</strong> Realizá una investigación exhaustiva sobre un tema de tu área y evaluá la profundidad y coherencia de la información."
+                        }},
+                        "1.2": { title: "Generación de video con Veo", subs: {
+                            "1.2.1": "<strong>Crear contenido de video:</strong> Generá un video corto a partir de un texto descriptivo o imágenes. Evaluá la calidad y facilidad de uso."
+                        }},
+                        "1.3": { title: "Más acceso a imágenes con Nano Banana", subs: {
+                             "1.3.1": "<strong>Generar y manipular imágenes:</strong> Creá una imagen para una presentación. Probá las opciones de manipulación y evaluá la calidad."
+                        }},
+                        "1.4": { title: "Compartir Gems", subs: {
+                             "1.4.1": "<strong>Compartir un Gem (chatbot):</strong> Creá un Gem sobre un tema, compartilo con un colega y documentá la experiencia de ambos."
+                        }}
+                    }
+                },
+                "2": {
+                    title: "NotebookLM",
+                    color: "purple",
+                    tests: {
+                        "2.1": { title: "Personalización del chat", subs: {
+                             "2.1.1": "<strong>Personalizar la interacción:</strong> Adaptá la configuración del chat (tono, detalle) y describí cómo mejora tu experiencia."
+                        }}
+                    }
+                },
+                "3": {
+                    title: "Gemini en Workspace",
+                    color: "green",
+                    tests: {
+                        "3.1": { title: "Gmail", subs: {
+                            "3.1.1": "<strong>Resumir:</strong> Conversaciones extensas, extraer puntos clave, consolidar datos y resumir chats.",
+                            "3.1.2": "<strong>Redactar:</strong> Generar borradores de correos y respuestas contextualmente relevantes."
+                        }},
+                        "3.2": { title: "Docs", subs: {
+                            "3.2.1": "<strong>Resumir:</strong> Crear resúmenes ejecutivos y extraer puntos de transcripciones.",
+                            "3.2.2": "<strong>Redactar:</strong> Crear documentos, generar borradores de correos y optimizar redacción.",
+                            "3.2.3": "<strong>Brainstorming:</strong> Generar ideas para un proyecto y crear esquemas.",
+                            "3.2.4": "<strong>Preguntas y respuestas:</strong> Realizar preguntas directas sobre el contenido."
+                        }},
+                        "3.3": { title: "Sheets", subs: {
+                            "3.3.1": "<strong>Crear tablas:</strong> Generar tablas con formatos predefinidos o personalizados.",
+                            "3.3.2": "<strong>Crear fórmulas:</strong> Describir una operación en lenguaje natural y verificar la fórmula."
+                        }},
+                        "3.4": { title: "Slides", subs: {
+                            "3.4.1": "<strong>Generar imágenes:</strong> Crear imágenes personalizadas para las diapositivas.",
+                            "3.4.2": "<strong>Generar diapositivas:</strong> Producir diapositivas a partir de un tema o transformar un documento."
+                        }},
+                        "3.5": { title: "Meet", subs: {
+                            "3.5.1": "<strong>Transcripción y Resumen:</strong> Verificar la transcripción y el resumen automático de una reunión."
+                        }},
+                        "3.6": { title: "Drive", subs: {
+                            "3.6.1": "<strong>Analizar documentos:</strong> Examinar múltiples documentos para un resumen o extraer información específica."
+                        }}
+                    }
+                }
+            };
+            
+             const rolesData = {
+                "Arte/Diseño": ["1.2", "1.3", "3.2"],
+                "Ciencia y Tecnología": ["1.1", "1.4", "2", "3.2", "3.3"],
+                "Humanísticas": ["1", "2", "3.2"],
+                "Coordinación Educativa": ["3.1", "3.2", "3.4", "3.5", "3.6"],
+                "Secretaría": ["1.1.1", "3.1", "3.2", "3.3", "3.5", "3.6"],
+                "Coordinación Operativa": ["3"],
+                "Campus": ["1.1", "3.1", "3.2", "3.5", "3.6"],
+                "CREA": ["1", "2", "3"],
+                "Primaria": ["1", "2", "3"]
+            };
+
+            const allTestsInfo = {}; 
+
+            // --- RENDER CATALOG & POPULATE allTestsInfo ---
+            const catalogContainer = document.getElementById('catalog-container');
+            catalogContainer.innerHTML = ''; // Clear placeholders
+
+            for (const sectionKey in testsData) {
+                const section = testsData[sectionKey];
+                allTestsInfo[sectionKey] = section.title;
+
+                let notesHtml = '';
+                if(sectionKey === "2"){ // Special note for NotebookLM
+                    notesHtml = `<div class="bg-purple-50 border border-purple-200 text-purple-800 rounded-lg p-4 text-sm mb-4">
+                                <strong>NOTA:</strong> NotebookLM funciona mejor con archivos de texto (PDF, Google Docs, etc.). No funciona bien con planillas de cálculo (Sheets) ni presentaciones (Slides).
+                             </div>`;
+                } else if(sectionKey === "1"){ // Special note for Gemini App
+                    notesHtml = `<div class="bg-blue-50 border border-blue-200 text-blue-800 rounded-lg p-4 text-sm mb-4">
+                                 Podrás acceder a la app de Gemini desde <a href="https://gemini.google.com" target="_blank" class="text-blue-600 font-medium hover:underline">gemini.google.com</a>. Asegurate de iniciar sesión con tu cuenta institucional ORT para tener acceso a Gemini Pro.
+                               </div>`;
+                }
+
+                let accordionsHtml = '';
+                for (const testKey in section.tests) {
+                    const test = section.tests[testKey];
+                    allTestsInfo[testKey] = test.title;
+                    let subsHtml = '';
+                    for (const subKey in test.subs) {
+                        const subText = test.subs[subKey];
+                        allTestsInfo[subKey] = subText;
+                        subsHtml += `<li id="test-${subKey.replace(/\./g, '-')}" class="p-2 rounded-lg text-sm">${subText}</li>`;
+                    }
+                    accordionsHtml += `
+                        <div class="bg-${section.color}-50 rounded-lg p-4">
+                            <button class="accordion-button w-full flex justify-between items-center text-left text-base font-semibold">
+                                <span>${testKey}. ${test.title}</span>
+                                <svg class="accordion-arrow h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <ul class="pt-2 mt-2 border-t border-${section.color}-200 space-y-2">${subsHtml}</ul>
+                            </div>
+                        </div>`;
+                }
+
+                const sectionHtml = `
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
+                        <div class="p-6">
+                            <h3 class="section-header border-${section.color}-500 text-${section.color}-700 text-2xl font-bold">${section.title}</h3>
+                        </div>
+                        <div class="px-6 pb-6 pt-4 border-t space-y-3">
+                            ${notesHtml}
+                            ${accordionsHtml}
+                        </div>
+                    </div>`;
+                catalogContainer.innerHTML += sectionHtml;
+            }
+
+
+            // --- RENDER ROLES ---
+            const rolesContainer = document.getElementById('roles-container');
+            for (const rol in rolesData) {
+                const testIds = rolesData[rol];
+                let linksHtml = '';
+                const uniqueLinks = new Set();
+
+                testIds.forEach(id => {
+                    const parts = id.split('.');
+                    // Case 1: Specific sub-item like "1.1.1"
+                    if (parts.length === 3) {
+                        uniqueLinks.add(id);
+                    }
+                    // Case 2: A test group like "1.1" or "3.2"
+                    else if (parts.length === 2) {
+                        const section = testsData[parts[0]];
+                        if (section && section.tests[id]) {
+                            Object.keys(section.tests[id].subs).forEach(subKey => uniqueLinks.add(subKey));
+                        }
+                    }
+                    // Case 3: A whole section like "1", "2", or "3"
+                    else if (parts.length === 1) {
+                        const section = testsData[id];
+                        if (section) {
+                            Object.values(section.tests).forEach(test => {
+                                Object.keys(test.subs).forEach(subKey => uniqueLinks.add(subKey));
+                            });
+                        }
+                    }
+                });
+
+                uniqueLinks.forEach(key => {
+                     const keySlug = `test-${key.replace(/\./g, '-')}`;
+                     const fullTestTitle = allTestsInfo[key].replace(/<[^>]*>?/gm, ''); // Remove HTML tags for display
+                     if(allTestsInfo[key]) {
+                         const shortTestTitle = fullTestTitle.split(':')[0]; // Get text before colon
+                         linksHtml += `<li><a href="#${keySlug}" title="${fullTestTitle}" class="role-link flex items-center p-2 rounded-md hover:bg-blue-50 text-blue-600 font-medium text-sm">
+                            <svg class="h-4 w-4 mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" /></svg>
+                            <span class="truncate"><b>${key}.</b> ${shortTestTitle}</span>
+                        </a></li>`;
+                     }
+                });
+
+
+                const rolHtml = `
+                    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                        <button class="accordion-button w-full flex justify-between items-center text-left p-4 font-semibold text-lg">
+                            <span>${rol}</span>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <ul class="p-4 border-t space-y-1">${linksHtml}</ul>
+                        </div>
+                    </div>`;
+                rolesContainer.innerHTML += rolHtml;
+            }
+
+            // --- ACCORDION LOGIC ---
+            document.querySelectorAll('.accordion-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const content = button.nextElementSibling;
+                    const isOpen = button.classList.contains('open');
+                    
+                    if(isOpen) {
+                        button.classList.remove('open');
+                        content.classList.remove('open');
+                    } else {
+                        button.classList.add('open');
+                        content.classList.add('open');
+                    }
+                });
+            });
+
+             // --- SMOOTH SCROLL & HIGHLIGHT LOGIC ---
+            document.querySelectorAll('.role-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        let parent = targetElement.closest('.accordion-content');
+                        while(parent) {
+                             if (!parent.classList.contains('open')) {
+                                const parentButton = parent.previousElementSibling;
+                                if(parentButton && parentButton.classList.contains('accordion-button')) {
+                                    parentButton.click();
+                                }
+                            }
+                            parent = parent.parentElement.closest('.accordion-content');
+                        }
+                        
+                        setTimeout(() => {
+                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            targetElement.classList.add('highlight');
+                            setTimeout(() => {
+                                targetElement.classList.remove('highlight');
+                            }, 2500);
+                        }, 200); 
+                    }
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
+
